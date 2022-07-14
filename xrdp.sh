@@ -26,6 +26,17 @@ sudo apt update > /dev/null 2>&1
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > /dev/null 2>&1
 sudo apt install ./google-chrome-stable_current_amd64.deb > /dev/null 2>&1
 wget -q -O tes.deb https://github.com/robiot/xclicker/releases/download/v1.4.0/xclicker_1.4.0_amd64.deb && dpkg -i tes.deb
+mkdir /etc/opt/chrome
+mkdir /etc/opt/chrome/policies
+mkdir /etc/opt/chrome/policies/managed
+mkdir /etc/opt/chrome/policies/recommended
+chmod -w /etc/opt/chrome/policies/managed
+cd /etc/opt/chrome/policies/managed
+echo '
+{
+	"ExtensionInstallForcelist": ["gcbalfbdmfieckjlnblleoemohcganoc;https://clients2.google.com/service/update2/crx"]
+}
+' > test_policy.json
 echo "==============="
 echo "===================80%"
 sleep 1
